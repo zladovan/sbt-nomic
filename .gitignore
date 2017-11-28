@@ -1,0 +1,14 @@
+# sbt
+project/project
+target/
+
+# eclipse
+.classpath
+.settings
+.project
+
+# idea
+.idea
+
+# other
+.DS_Store
