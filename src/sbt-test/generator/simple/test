@@ -1,0 +1,4 @@
+# check if files are generated under target/nomic folder
+> nomic
+$ exists target/nomic/nomic.box
+$ must-mirror build.sbt target/nomic/test.file
