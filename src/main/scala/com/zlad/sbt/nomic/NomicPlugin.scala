@@ -36,7 +36,7 @@ object NomicPlugin extends AutoPlugin {
     mappings in nomic := Seq.empty,
     target in nomic := target.value / "nomic",
     nomicDescribe := describe(nomicFacts.value),
-    nomic := stage((target in nomic).value, (mappings in nomic).value, nomicDescribe.value),
+    nomic := stage((target in nomic).value, (mappings in nomic).value, nomicDescribe.value)
   )
 
   lazy val nomicControllerSettings: Seq[Def.Setting[_]] = Seq(
