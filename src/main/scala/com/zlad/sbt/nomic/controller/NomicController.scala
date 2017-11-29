@@ -35,7 +35,7 @@ object NomicController {
     callAndLog("nomic config", log).collect { case configLine(k, v) => k -> v }.toMap
 
   private def callAndLog(command: String, log: sbt.Logger) = {
-    val lines = command.lineStream_!
+    val lines = command.lines_!
     lines.foreach(log.info(_))
     lines
   }
