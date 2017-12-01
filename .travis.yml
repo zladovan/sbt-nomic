@@ -8,7 +8,9 @@ matrix:
     - env: SBT_VERSION=1.0.4
 
 script:
-  - sbt "^^ $SBT_VERSION" clean test scripted
+  - sbt "^^ $SBT_VERSION" clean test scripted publish
+
+sbt_args: -DbuildNr=$TRAVIS_BUILD_NUMBER
 
 sudo: false
 
@@ -20,3 +22,8 @@ cache:
 before_cache:
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
   - find $HOME/.sbt        -name "*.lock"               -print -delete
+
+env:
+  global:
+  - secure: oPI5JTOqThdSP4XT4Z2dmxErV1lZlIlI0Y9A3yKjxh+nCSNjEkHIJW8lCj3ziCS/trWQYXJwc/xJ3BOgiIjybNpygiXEKtX6pLCl/gzZ+BTT7+U8KoSncO0n9crSQYFFoXDYhl18MeAW+z+KlvCfefhd8+7EA8ZlbG7IAYhbd1tZ3tC1L/gG09lIj5SZ9pKSi5Y42bZo5tTg4BDA+SpFeSMuK9mRCeCaHek641FLwmy25P0yKXFM0ftwWOYZUEuc3+M+IFbZ8p2MIalDNAaNn5vxGmMBhaulA53k4xWq3gWhjByhGzIpIMyFhFbHXVys73C2elhAvTuvvy6Qob4IB6MMnghcognvI2Y0KC97XwYrQItBYelNcBcURTmTPiUusyojHTmL4vk/GPZf40ZbGltFrx7ixDdb7IuKUcctN1w0prvMgi14fi5sLEUijZ5WAZy3PmG1voAuNRVYsMXI/F3+mmLcYWComM++wbKkzfFr5LSQTMdjwFFlTe1SfFJrGdqQFlwvPiyxtcUIYKWj88g5Vwcs+UDecFVaUEN2f6v0gGGsmJWNICIKg/nwbozMOsOQtvMWRxkDmcBEjLSVAEY/YMeHJQ4Y+WpmJyAbXJMLyu5XVsthsSjwYcLKN9B3BRsya765tIdRowyNZtdSXEGvTR2YRdcYApt8n4YxCAI=
+  - secure: CcY+k4AePhQC7RtSqPl94FKwwDpK2qQzsZffdYnqsEJ4IpJdLI57ttzqlqzn3hPhy6i5jhg25reU8G4vsRhOnsmkWQkN8RS4G/Q/h878XGq8LvBqBufgW1Lxm236zUFn70+fwsTs+VuvUBaS/LtRipoOCYJsc9LYS6jHcPIB6WAlGCFe/fhgpZ8bgRZQOUvZL8ZlOR6NG4h08Bht6C/TUgoki5kjYaWE1phWkpcB8JqKDZwZRpm7LIjQzMUnbJZJWOABoj5KJQNvQ71XArHijWGebqcy0lGjjT4AwgXyBT4VlhA9s2OyD1B7MqU+2gvlz3RqYKvyyrL6nR3pblg+gaJSzRpIS103Z9VOWpY2diCWVmLNXv6bufZht581H13a7/hJk2svplCunGsuLM/4fyAEMvOucAZrS66omIQtBdJzDVXai36OzhNFlwnupnhY1CcXUW6/JUYpNH5K2mZ+30g63GxxDMyNoxENUw6oDdH0IeTU5Fd+VS7mHLB0ffzH29EF8gf4X/r4vJ6H/bRWBL4+2QhZfpVhv4817/njtVtHtO70ZMkqst8pjtBMXqQBowYR0PPQdA1g3wRw/k1ina+n6MdPRXM4C/50rST2rb9ROkIktePQihkrybMO9J2T1CLJ+W7iZ5UMKIztFgWxpIjJzkV1WKAAE7u8J598P3A=
