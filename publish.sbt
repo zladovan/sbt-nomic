@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtGit.GitKeys
 import GitKeys._
 
-lazy val isRelease = Def.setting(git.gitCurrentBranch.value == "master")
+lazy val isRelease = Def.setting(git.gitCurrentBranch.value.endsWith("master"))
 
 publishMavenStyle := false
 
@@ -23,6 +23,7 @@ version := {
 
 // tag release version after publish
 publish := {
+  streams.value.log.info(s"Current branch: ${git.gitCurrentBranch.value}")
   publish.value
   (version.value, isRelease.value, gitRunner.value, baseDirectory.value, streams.value.log) match {
     case (ver, true, runGit, cwd, log) =>
