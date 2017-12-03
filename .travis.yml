@@ -8,7 +8,7 @@ matrix:
     - env: SBT_VERSION=1.0.4
 
 script:
-  - sbt "^^ $SBT_VERSION" clean test scripted publish
+  - sbt -jvm-opts "^^ $SBT_VERSION" clean test scripted publish
 
 sbt_args: -DbuildNr=$TRAVIS_BUILD_NUMBER
 
