@@ -13,7 +13,7 @@ bintrayRepository := (if (isSnapshot.value) "sbt-plugin-snapshots" else "sbt-plu
 version := {
   (version.value, git.gitCurrentBranch.value, sys.props.get("buildNr")) match {
     case (v, "master", Some(n)) => v.replace("-SNAPSHOT", s".$n")
-    case (v, _, _) => v
+    case (v, _, _) => v.replace("-SNAPSHOT", s"-${System.currentTimeMillis}")
   }
 }
 
