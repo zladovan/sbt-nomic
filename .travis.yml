@@ -8,7 +8,7 @@ matrix:
     - env: SBT_VERSION=1.0.4
 
 script:
-  - sbt -DbuildNr=$TRAVIS_BUILD_NUMBER "^^ $SBT_VERSION" clean test scripted publish
+  - sbt -Dbranch=$TRAVIS_BRANCH -DbuildNr=$TRAVIS_BUILD_NUMBER "^^ $SBT_VERSION" clean test scripted publish
 
 sudo: false
 

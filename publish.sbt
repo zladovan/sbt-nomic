@@ -32,3 +32,6 @@ publish := {
     case _ => // nothing to do on publish from other branch than master
   }
 }
+
+// enables define branch name by system property
+git.gitCurrentBranch := sys.props.getOrElse("branch", git.gitCurrentBranch.value)
