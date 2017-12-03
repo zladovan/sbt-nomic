@@ -23,7 +23,6 @@ version := {
 
 // tag release version after publish
 publish := {
-  streams.value.log.info(s"Current branch: ${git.gitCurrentBranch.value}")
   publish.value
   (version.value, isRelease.value, gitRunner.value, baseDirectory.value, streams.value.log) match {
     case (ver, true, runGit, cwd, log) =>
@@ -33,4 +32,5 @@ publish := {
   }
 }
 
+// enables define branch name by system property
 git.gitCurrentBranch := sys.props.getOrElse("branch", git.gitCurrentBranch.value)
