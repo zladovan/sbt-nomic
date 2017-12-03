@@ -23,6 +23,7 @@ version := {
 
 // tag release version after publish
 publish := {
+  streams.value.log.info(s"Current branch: ${git.gitCurrentBranch.value}")
   publish.value
   (version.value, isRelease.value, gitRunner.value, baseDirectory.value, streams.value.log) match {
     case (ver, true, runGit, cwd, log) =>
@@ -31,3 +32,5 @@ publish := {
     case _ => // nothing to do on publish from other branch than master
   }
 }
+
+git.gitCurrentBranch := sys.props.getOrElse("branch", git.gitCurrentBranch.value)
