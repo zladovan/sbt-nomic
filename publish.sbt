@@ -6,11 +6,11 @@ lazy val isRelease = Def.setting(git.gitCurrentBranch.value == "master")
 publishMavenStyle := false
 
 bintrayPackageLabels := Seq("sbt", "plugin")
-bintrayVcsUrl := Some("git@github.com:zladovan/sbt-nomic.git")
 bintrayPackage := name.value
 bintrayReleaseOnPublish := true
 bintrayOrganization := Some("zlad")
 bintrayRepository := (if (isRelease.value) "sbt-plugins" else "sbt-plugin-snapshots")
+bintrayVcsUrl := Some("https://github.com/zladovan/sbt-nomic.git")
 
 // use build number for release, git commit hash for snapshot version
 version := {

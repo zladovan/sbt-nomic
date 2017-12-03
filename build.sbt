@@ -2,6 +2,8 @@ name := "sbt-nomic"
 organization := "com.zlad"
 description := "Sbt plugin for nomic - applications deployer for hadoop ecosystem"
 licenses += "Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
+homepage := Some(url("https://github.com/zladovan/sbt-nomic"))
+scmInfo := Some(ScmInfo(url("https://github.com/zladovan/sbt-nomic"), "git@github.com:zladovan/sbt-nomic.git"))
 
 sbtPlugin := true
 
