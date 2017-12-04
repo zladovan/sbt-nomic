@@ -10,7 +10,7 @@ matrix:
 before_script:
   - git config --global user.email "nobody@nobody.org"
   - git config --global user.name "Travis CI"
-  - git config --global token $GITHUB_TOKEN
+  - git remote add origin https://$GITHUB_TOKEN@github.com/zladovan/sbt-nomic.git
 
 script:
   - sbt -Dbranch=$TRAVIS_BRANCH -DbuildNr=$TRAVIS_BUILD_NUMBER "^^ $SBT_VERSION" clean test scripted publish
