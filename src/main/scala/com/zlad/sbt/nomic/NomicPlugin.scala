@@ -22,9 +22,7 @@ object NomicPlugin extends AutoPlugin {
     nomicGeneralSettings ++ nomicGeneratorSettings ++ nomicControllerSettings
 
   lazy val nomicGeneralSettings: Seq[Def.Setting[_]] = Seq(
-    name in nomic := (baseDirectory.value relativeTo (baseDirectory in ThisBuild).value)
-      .map(_.getPath)
-      .getOrElse(""),
+    name in nomic := name.value,
     version in nomic := version.value,
     nomicFacts := Seq(
       Name((name in nomic).value),
