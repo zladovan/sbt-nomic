@@ -27,7 +27,7 @@ publish := {
   (version.value, isRelease.value, gitRunner.value, baseDirectory.value, streams.value.log) match {
     case (ver, true, runGit, cwd, log) =>
       runGit("tag", s"v$ver")(cwd, log)
-      runGit("push", "origin", "--tags")(cwd, log)
+      runGit("push", "origin", "--tags", "-f")(cwd, log)
     case _ => // nothing to do on publish from other branch than master
   }
 }
