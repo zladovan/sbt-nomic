@@ -1,6 +1,7 @@
 # sbt-nomic
 
 [![Build Status](https://travis-ci.org/zladovan/sbt-nomic.svg?branch=master)](https://travis-ci.org/zladovan/sbt-nomic)
+[![Download](https://api.bintray.com/packages/sbt/sbt-plugin-releases/sbt-nomic/images/download.svg) ](https://bintray.com/sbt/sbt-plugin-releases/sbt-nomic/_latestVersion)
 
 Sbt plugin for [Nomic](https://github.com/sn3d/nomic/) - applications deployer for hadoop ecosystem.
 
@@ -15,7 +16,7 @@ Nomic plugin is published for **sbt 0.13.6** and **sbt 1.0.4**.
 Create file ``project/nomic.sbt`` under base directory with following content:
 
 ```scala
-addSbtPlugin("com.zlad" % "sbt-nomic" % "0.1.26")
+addSbtPlugin("com.zlad" % "sbt-nomic" % "0.1.30")
 ```
 
 ### Configure nomic
@@ -66,5 +67,13 @@ TODO
 
 ## Controller
 
-TODO
+There are few tasks which result in calling nomic commands from command line. 
+They can be used to control deployment of nomic box(es) from build.
+See [Nomic documentation](http://nomic.readthedocs.io/en/latest/gettingstarted.html#deploying-and-removing) for details. 
+
+* nomicInstall - ``nomic install ${path to target/nomic}``
+* nomicRemove - ``nomic remove $group:$name:*`` 
+* nomicUpgrade - shorthand for calling  nomicRemove and nomicInstall
+* nomicList - ``nomic list``
+* nomicConfig - ``nomic conf``
  

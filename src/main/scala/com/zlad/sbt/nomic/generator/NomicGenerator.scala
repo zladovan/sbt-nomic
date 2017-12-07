@@ -7,8 +7,8 @@ import sbt._
 
 object NomicGenerator {
 
-  def describe(facts: Seq[NomicFact]): String =
-    NomicFactWriter(facts).content
+  def describe(facts: Seq[NomicFact], dependencies: Map[String, String]): String =
+    NomicFactWriter(facts, dependencies).content
 
   // todo add caching
   def stage(
