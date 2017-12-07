@@ -34,20 +34,20 @@ case class HdfsDir(
 sealed abstract class HiveNomicFact(schemaName: Option[String], faction: Option[String])
   extends NomicFact(Some(NomicFactGroup("hive", schemaName.toList)), faction)
 
-case class HiveSchema(name: String, keepIt: Boolean, faction: Option[String])
+case class HiveSchema(name: String, keepIt: Boolean = false, faction: Option[String] = None)
   extends HiveNomicFact(None, faction)
 
 case class HiveFields(
   fields: Map[String, String],
   schema: Option[String] = None,
   faction: Option[String] = None
-) extends HiveNomicFact(schema, None)
+) extends HiveNomicFact(schema, faction)
 
 case class HiveScript(
   path: NomicPath,
   schema: Option[String] = None,
   faction: Option[String] = None
-) extends HiveNomicFact(schema, None)
+) extends HiveNomicFact(schema, faction)
 
 case class HiveTable(
   name: String,
