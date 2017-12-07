@@ -21,16 +21,15 @@ case class SequenceWriter(values: Seq[DslWriter], delimiter: String) extends Dsl
 
 case class GroupWriter(name: DslWriter, writers: Seq[DslWriter]) extends DslWriter {
   override def content: String =
-    s"""
-       |${name.content} {
-       |  ${writers.map(_.content).mkString("\n  ")}
-       |}
-     """.stripMargin
+    s"""|
+        |${name.content} {
+        |  ${writers.map(_.content).mkString("\n  ")}
+        |}""".stripMargin.replaceAll("(?m)^\\s+$", "")
 }
 
 case class CallWriter(name: DslWriter, params: Seq[DslWriter]) extends DslWriter {
   override def content: String =
-    s"""${name.content}(${params.map(_.content).mkString(", ")})"""
+    s"""${name.content} (${params.map(_.content).mkString(", ")})"""
 }
 
 object DslWriter {

@@ -6,5 +6,6 @@ import sbt.{File, TaskKey, taskKey}
 trait NomicGeneratorKeys {
   val nomic: TaskKey[File] = taskKey[File]("Collect all files in nomic target")
   val nomicFacts: TaskKey[Seq[NomicFact]] = taskKey[Seq[NomicFact]]("Resources in nomic module")
+  val nomicFactionDependencies: TaskKey[Map[String, String]] = taskKey[Map[String, String]]("Dependencies for nomic factions")
   val nomicDescribe: TaskKey[String] = taskKey[String]("Nomic box DSL content")
 }

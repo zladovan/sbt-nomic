@@ -33,8 +33,9 @@ object NomicPlugin extends AutoPlugin {
   lazy val nomicGeneratorSettings: Seq[Def.Setting[_]] = Seq(
     mappings in nomic := Seq.empty,
     target in nomic := target.value / "nomic",
-    nomicDescribe := describe(nomicFacts.value),
-    nomic := stage((target in nomic).value, (mappings in nomic).value, nomicDescribe.value)
+    nomicDescribe := describe(nomicFacts.value, nomicFactionDependencies.value),
+    nomic := stage((target in nomic).value, (mappings in nomic).value, nomicDescribe.value),
+    nomicFactionDependencies := Map.empty
   )
 
   lazy val nomicControllerSettings: Seq[Def.Setting[_]] = Seq(
