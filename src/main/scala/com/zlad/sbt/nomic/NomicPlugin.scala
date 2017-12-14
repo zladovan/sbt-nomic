@@ -43,9 +43,6 @@ object NomicPlugin extends AutoPlugin {
     nomicRemove := remove(nomicFacts.value, streams.value.log),
     nomicList := list(streams.value.log),
     nomicConfig := config(streams.value.log),
-    nomicUpgrade := {
-      nomicRemove.value
-      nomicInstall.value
-    }
+    nomicUpgrade := Def.sequential(nomicRemove, nomicInstall).value
   )
 }
