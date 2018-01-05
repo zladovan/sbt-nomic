@@ -6,7 +6,7 @@ import scala.sys.process._
 
 object NomicController {
   def install(path: String): Unit =
-    s"nomic install $path".!
+    updateForOs(s"nomic install $path").!
 
   def remove(facts: Seq[NomicFact], log: sbt.Logger): Unit = {
     type BoxId = (Option[String], Option[String], Option[String])
@@ -25,7 +25,7 @@ object NomicController {
   def remove(group: String, name: String, version: String, log: sbt.Logger): Unit = {
     val id = s"$group:$name:$version"
     log.info(s"Removing $id")
-    s"nomic remove $id".!
+    updateForOs(s"nomic remove $id").!
   }
 
   def list(log: sbt.Logger): Seq[String] =
