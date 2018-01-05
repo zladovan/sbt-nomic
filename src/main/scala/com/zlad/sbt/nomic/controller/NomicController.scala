@@ -35,9 +35,16 @@ object NomicController {
     callAndLog("nomic config", log).collect { case configLine(k, v) => k -> v }.toMap
 
   private def callAndLog(command: String, log: sbt.Logger) = {
-    val lines = command.lines_!
+    val lines = updateForOs(command).lines_!
     lines.foreach(log.info(_))
     lines
+  }
+
+  private def updateForOs(command: String): String = {
+    if (sys.props.get("os.name").exists(_.startsWith("Windows")))
+      "cmd /c \"" + command + "\""
+    else
+      command
   }
 
   private lazy val configLine = "(.+?):\\s*(.*)".r
