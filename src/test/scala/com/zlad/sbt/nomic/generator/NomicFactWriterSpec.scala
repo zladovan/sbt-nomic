@@ -131,6 +131,11 @@ class NomicFactWriterSpec extends FlatSpec with Matchers {
         |}""".stripMargin
   }
 
+  it should "write require" in {
+    val dsl = write(Require(groupName = "sbt", name = "nomic", version = "0.1.0"))
+    dsl shouldEqual """require group: "sbt", name: "nomic", version: "0.1.0"""".stripMargin
+  }
+
   def writeMany(facts: Seq[NomicFact], dependencies: Map[String, String] = Map.empty): String =
     NomicFactWriter(facts, dependencies).content
 

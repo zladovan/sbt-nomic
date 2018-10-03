@@ -2,14 +2,15 @@ package com.zlad.sbt.nomic.model
 
 case class NomicFactGroup(name: String, params: List[String] = List.empty)
 
-sealed abstract class NomicFact(val group: Option[NomicFactGroup], val factionName: Option[String])
+sealed abstract class NomicFact(val group: Option[NomicFactGroup] = None, val factionName: Option[String] = None)
 
 // General facts
-case class Group(name: NomicPath) extends NomicFact(None, None)
-case class Name(name: NomicPath) extends NomicFact(None, None)
-case class Version(name: String) extends NomicFact(None, None)
-case class Module(name: NomicPath) extends NomicFact(None, None)
-case class Const(name: String, value: String) extends NomicFact(None, None)
+case class Group(name: NomicPath) extends NomicFact
+case class Name(name: NomicPath) extends NomicFact
+case class Version(name: String) extends NomicFact
+case class Module(name: NomicPath) extends NomicFact
+case class Const(name: String, value: String) extends NomicFact
+case class Require(groupName: String, name: String, version: String) extends NomicFact
 
 
 // HDFS
