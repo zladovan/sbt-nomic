@@ -46,11 +46,12 @@ object NomicFactWriter {
   }
 
   def writer: NomicFact => DslWriter = {
-    case Group(group)       => assignment("group", quoted(group.toString))
-    case Name(name)         => assignment("name", quoted(name.toString))
-    case Version(version)   => assignment("version", quoted(version))
-    case Module(module)     => spaceDelimited("module", quoted(module.toString))
-    case Const(name, value) => assignment(name, doubleQuoted(value))
+    case Group(group)                   => assignment("group", quoted(group.toString))
+    case Name(name)                     => assignment("name", quoted(name.toString))
+    case Version(version)               => assignment("version", quoted(version))
+    case Module(module)                 => spaceDelimited("module", quoted(module.toString))
+    case Const(name, value)             => assignment(name, doubleQuoted(value))
+    case Require(group, name, version)  => require(group, name, version)
 
     case HdfsResource(path, None, keep, _) => keepIt(keep, hdfsResource(path))
     case HdfsResource(path, Some(to), keep, _) =>
@@ -86,6 +87,9 @@ object NomicFactWriter {
       )
     case OozieCoordinator(path, _, keep, _) => keepIt(keep, oozieCoordinator(path))
   }
+
+  def require(group: String, name: String, version: String): DslWriter =
+    spaceDelimited("require", properties(Map("group" -> group, "name" -> name, "version" -> version)))
 
   def hdfsResource(path: NomicPath): DslWriter =
     spaceDelimited("resource", quoted(path.toString))
