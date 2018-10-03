@@ -16,7 +16,7 @@ Nomic plugin is published for **sbt 0.13.6** and **sbt 1.0.4**.
 Create file ``project/nomic.sbt`` under base directory with following content:
 
 ```scala
-addSbtPlugin("com.zlad" % "sbt-nomic" % "0.1.37")
+addSbtPlugin("com.zlad" % "sbt-nomic" % "0.1.42")
 ```
 
 ### Configure nomic
